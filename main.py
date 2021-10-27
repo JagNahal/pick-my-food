@@ -16,7 +16,7 @@ import random
 ⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿"""
 
 def price():
-    print('\nFancy = Over $30\n' 'Normal = $13 - $25\n' 'Cheap = Under $13\n')
+    print('\nFancy = Over $30\n' 'Normal = $15 - $30\n' 'Cheap = Under $15\n')
     global cost
     flag = True
     while flag == True:
