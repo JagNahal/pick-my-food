@@ -1,28 +1,25 @@
-# https://github.com/Rapptz/discord.py
-import discord
-import os
+class decisions():
+    def price(self):
+        print('\nFancy = Over $30\n'
+              'Normal = $13 - $25\n'
+              'Cheap = Under $13\n')
+        self.cost = input("How expensive? [F]ancy, [N]ormal [C]heap ").upper()
+        if self.cost == 'F':
+            print('\nHy\'s Steakhouse\n')
+        elif self.cost == 'N':
+            print('cactus club cafe\n')
+        else:
+            print('\ntaco bell\n')
 
-client = discord.Client()
+    def cuisine(self):
+        self.type_of_food = input("Which Cuisine? ").upper()
+        if (self.type_of_food == 'KOREAN') and (cost == 'C'):
+            print('Daniel\'s House')
 
 
-@client.event
-async def on_ready():
-    print('We have logged in as {0.user}'.format(client))
+d = decisions()
 
-@client.event
-async def on_message(message):
-    late_strings = ("I AM LATE", "IM LATE", "I'M LATE")
-    if message.author == client.user:
-        return
-    uppercase_input = message.content.upper()
-
-    for late_string in late_strings:
-        if late_string in uppercase_input:
-            await message.channel.send('who is it :rage:')
-            name = input()
-            if name = 'george'
-               await message.channel.send('whats new :dissapointed')
-
-            
-
-client.run(os.environ['DISCORD_TOKEN'])
+initialize = input()
+if initialize == ".":
+    d.price()
+    d.cuisine()
