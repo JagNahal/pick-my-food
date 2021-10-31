@@ -54,10 +54,10 @@ if cuisine_type == 'JAPANESE':
             print('sushi cali')
         elif cost == 'F':
             print('somewhere fancy')
-else:
-    if cost == 'C':
-      print('idk')
-    elif cost == 'N':
-       print(food_options.normal_asian.pop().capitalize())
-    elif cost == 'F':
-        print('somewhere fancy')
+    elif dish_type != 'ramen' or 'sushi':
+        if cost == 'C':
+          print('idk')
+        elif cost == 'N':
+          print(food_options.normal_asian.pop().capitalize())
+        elif cost == 'F':
+            print('somewhere fancy')
