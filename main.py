@@ -1,4 +1,6 @@
 import random
+import price_cuisine_functions
+import food_options
 """⢰⣶⠶⢶⣶⣶⡶⢶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⡶⠶⢶⣶⣶⣶⣶
 ⠘⠄⠄⠄⠄⠄⠄⠄⠄⣿⣿⣿⣿⣿⣿⣿⠿⠄⠄⠄⠈⠉⠄⠄⣹⣶⣿⣿⣿⣿⢿
 ⠄⠤⣾⣿⣿⣿⣿⣷⣤⡈⠙⠛⣿⣿⣿⣧⣀⠠⣤⣤⣴⣶⣿⣿⣿⣿⣿⣿⣿⣿⣶
@@ -15,34 +17,13 @@ import random
 ⢸⣿⣿⣿⣿⣿⣿⣿⣿⡆⠈⠿⠿⠿⠿⠿⠿⠿⠿⠿⣧⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿"""
 
-
-def price():
-    print('\nFancy = Over $30\n' 'Normal = $15 - $30\n' 'Cheap = Under $15\n')
-    flag = True
-    while flag == True:
-        cost = input("How expensive? [F]ancy, [N]ormal [C]heap: ").upper()
-        if (cost == 'F') or (cost == 'N') or (cost == 'C'):
-            print(cost)
-            break
-        else:
-            print('\nInvalid Input (Choose between F, N, or C)\n ')
-            continue
-    return cost
-
-
-def cuisine():
-    type_of_food = input("\nWhich Cuisine? ").upper()
-    return type_of_food
-
-
-cheap_american = ('McD', 'Wendy\'s', 'A&W', 'Carl\'s Jr', 'Burger King KEKW')
-
 initialize = input()
 if initialize == ".":
-    cost = price()
-    type_of_food = cuisine()
+    cost = price_cuisine_functions.price()
+    cuisine_type = price_cuisine_functions.cuisine()
+    dish_type = price_cuisine_functions.dish()
 
-if type_of_food == 'KOREAN':
+if cuisine_type == 'KOREAN':
     if cost == 'C':
         print('Daniel\'s House')
     elif cost == 'N':
@@ -50,18 +31,33 @@ if type_of_food == 'KOREAN':
     elif cost == 'F':
         print('Kook KBBQ')
 
-if type_of_food == 'AMERICAN':
+if cuisine_type == 'AMERICAN':
     if cost == 'C':
-        print(random.choice(cheap_american))
+        print(food_options.cheap_american.pop())
     elif cost == 'N':
         print('Cactus Club')
     elif cost == 'F':
         print('Hy\'s Steakhouse')
 
-if type_of_food == 'JAPANESE':
+if cuisine_type == 'JAPANESE':
+    if dish_type == 'ramen':
+        if cost == 'C':
+            print('idk')
+        elif cost == 'N':
+            print(food_options.ramen.pop().capitalize())
+        elif cost == 'F':
+            print('somewhere fancy')
+    elif dish_type == 'sushi':
+        if cost == 'C':
+            print('idk')
+        elif cost == 'N':
+            print('sushi cali')
+        elif cost == 'F':
+            print('somewhere fancy')
+else:
     if cost == 'C':
-        print('idk')
+      print('idk')
     elif cost == 'N':
-        print('somewhere')
+       print(food_options.normal_asian.pop().capitalize())
     elif cost == 'F':
-        print('Masayoshi')
+        print('somewhere fancy')
