@@ -10,11 +10,7 @@ def price():
             continue
     return cost
 
-
 def cuisine():
-    cuisine_type = input("\nWhich Cuisine? ").upper()
+    cuisine_type = input("\nWhich Cuisine?\n\nAmerican\nAsian\nChinese\nFrench\nFast Food\nIndian\nItalian\nJapanese\nKorean\nSeafood\nSushi\nThai\nVietnamese\n\n").upper()
     return cuisine_type
 
-def dish():
-  dish_type = input('\nSpecific Dish In Mind? ')
-  return dish_type
