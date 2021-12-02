@@ -2,7 +2,6 @@ import os
 import requests
 import random
 
-# TODO: Add mexican cuisine as an option
 CUISINE_CODES = {
     'ASIAN': 10659,
     'INDIAN': 10346,
