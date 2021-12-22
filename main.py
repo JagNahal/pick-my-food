@@ -19,6 +19,12 @@ CUISINE_CODES = {
     'VIETNAMESE': 10675,
 }
 
+def which_location():
+  pass
+
+def get_location():
+  pass
+
 def get_cuisines_prompt():
     """Returns a friendly sorted list of cuisine options for display in prompt"""
     cuisines = []
@@ -55,7 +61,7 @@ def get_restaurants(cuisine_type):
 
     headers = {
         'x-rapidapi-host': "travel-advisor.p.rapidapi.com",
-        'x-rapidapi-key': os.environ['API_KEY']
+        'x-rapidapi-key': os.environ['TRAVEL_ADVISOR']
     }
 
     restaurants = requests.request(
@@ -75,7 +81,8 @@ def choose_restaurant():
     chosen_restaurant = random.choice(restaurants)
     return chosen_restaurant
 
+
 if __name__ == "__main__":
-  restaurant = choose_restaurant()
-  print(restaurant["name"])
-  print(restaurant["website"])
+    restaurant = choose_restaurant()
+    print(restaurant["name"])
+    print(restaurant["website"])
