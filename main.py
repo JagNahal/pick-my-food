@@ -19,11 +19,23 @@ CUISINE_CODES = {
     'VIETNAMESE': 10675,
 }
 
+
 def which_location():
-  pass
+    location = input("Where do you want to eat? \n")
+    return location
+
 
 def get_location():
-  pass
+    location = which_location()
+    BASE_URL = "http://api.openweathermap.org/geo/1.0/direct?"
+    URL = BASE_URL + "q=" + location + "&appid=" + os.environ['OPEN_WEATHER']
+    response = requests.get(URL)
+    latitude = response.json()[0]["lat"]
+    longitude = response.json()[0]["lon"]
+    if response.status_code != 200:
+        print("Error in the HTTP request")
+    return latitude, longitude
+
 
 def get_cuisines_prompt():
     """Returns a friendly sorted list of cuisine options for display in prompt"""
@@ -41,43 +53,39 @@ def which_cuisine():
     return cuisine_type
 
 
-def get_restaurants(cuisine_type):
+def get_restaurants(cuisine_type, location):
     """Returns restaurants from Travel Advisor from user's inputed cuisine choice"""
-
-    query_string = {
-        "bl_latitude": "49.204589",
-        "tr_latitude": "49.301397",
-        "bl_longitude": "-123.223932",
-        "tr_longitude": "-122.702477",
-        "min_rating": "4",
-        "restaurant_tagcategory_standalone": "10591",
-        "restaurant_tagcategory": "10591",
+    latitude = float(location[0])
+    longitude = float(location[1])
+    print(latitude)
+    querystring = {
+        "latitude": f"{latitude}",
+        "longitude": f"{longitude}",
         "limit": "50",
         "currency": "CAD",
-        "combined_food": f"{CUISINE_CODES[cuisine_type]}",
+        "distance": "5",
+        "restaurant_tagcategory": f"{CUISINE_CODES[cuisine_type]}",
+        "open_now": "false",
         "lunit": "km",
-        "lang": "en_US"
+        "lang": "en_US",
+        "min_rating": "4"
     }
 
     headers = {
         'x-rapidapi-host': "travel-advisor.p.rapidapi.com",
-        'x-rapidapi-key': os.environ['TRAVEL_ADVISOR']
+        'x-rapidapi-key': "0cc3dcdeaamsh25496be4808dcb0p1f4428jsnc2ff3691a620"
     }
 
-    restaurants = requests.request(
-        "GET",
-        "https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary",
-        headers=headers,
-        params=query_string)
+    restaurants = requests.request("GET", "https://travel-advisor.p.rapidapi.com/restaurants/list-by-latlng", headers=headers, params=querystring)
 
     restaurants = restaurants.json()['data']
-
     return restaurants
 
 
 def choose_restaurant():
+    location = get_location()
     cuisine_type = which_cuisine()
-    restaurants = get_restaurants(cuisine_type)
+    restaurants = get_restaurants(cuisine_type, location)
     chosen_restaurant = random.choice(restaurants)
     return chosen_restaurant
 
