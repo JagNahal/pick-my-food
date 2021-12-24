@@ -54,17 +54,16 @@ def which_cuisine():
 
 
 def get_restaurants(cuisine_type, location):
-    """Returns restaurants from Travel Advisor from user's inputed cuisine choice"""
+    """Returns restaurants from Travel Advisor from user's inputed cuisine choice and location"""
     latitude = float(location[0])
     longitude = float(location[1])
-    print(latitude)
     querystring = {
         "latitude": f"{latitude}",
         "longitude": f"{longitude}",
         "limit": "50",
         "currency": "CAD",
-        "distance": "5",
-        "restaurant_tagcategory": f"{CUISINE_CODES[cuisine_type]}",
+        "distance": "10",
+        "combined_food": f"{CUISINE_CODES[cuisine_type]}",
         "open_now": "false",
         "lunit": "km",
         "lang": "en_US",
@@ -76,7 +75,11 @@ def get_restaurants(cuisine_type, location):
         'x-rapidapi-key': "0cc3dcdeaamsh25496be4808dcb0p1f4428jsnc2ff3691a620"
     }
 
-    restaurants = requests.request("GET", "https://travel-advisor.p.rapidapi.com/restaurants/list-by-latlng", headers=headers, params=querystring)
+    restaurants = requests.request(
+        "GET",
+        "https://travel-advisor.p.rapidapi.com/restaurants/list-by-latlng",
+        headers=headers,
+        params=querystring)
 
     restaurants = restaurants.json()['data']
     return restaurants
