@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from main import choose_restaurant
+import choose_restaurant
 
 app = Flask(__name__)
 
@@ -7,7 +7,7 @@ app = Flask(__name__)
 def home():
     try:
       restaurant = choose_restaurant()
-      return render_template('index.html', my_restaurant=restaurant)
+      return render_template('index.html', "main.css",my_restaurant=restaurant)
     except Exception as e:
       print(e)
       return render_template('index.html', my_restaurant="Something is wrong with the server, try again later")
