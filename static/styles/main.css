@@ -1,0 +1,14 @@
+h1{
+  font-variant: small-caps;
+  text-align: center;
+  color: rgb(51, 45, 45);
+}
+div{
+  background-color: rgb(211, 47, 47);
+  height:100px;
+  width: 100%;
+  padding: 16px;
+  max-width: 500px;
+  margin: 0 auto;
+  align-items: center;
+}
