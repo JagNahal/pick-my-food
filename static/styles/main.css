@@ -1,14 +1,65 @@
 h1{
   font-variant: small-caps;
-  text-align: center;
-  color: rgb(51, 45, 45);
+  color: rgb(255, 255, 255);
+  position: absolute;
+  top: 25px;
+  left: 75px;
 }
+
 div{
-  background-color: rgb(211, 47, 47);
-  height:100px;
+  overflow: hidden;
   width: 100%;
-  padding: 16px;
-  max-width: 500px;
-  margin: 0 auto;
-  align-items: center;
+  background: url('https://cdn.pixabay.com/photo/2017/02/15/10/39/salad-2068220_1280.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+
+.Btn_blue_normal {
+  width: 150px;
+  height: 50px;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(4%, #ff6464),
+    to(#fa4141)
+  );
+  background-image: linear-gradient(-180deg, #ff6464 4%, #fa4141 100%);
+  border: 1px solid rgba(51, 100, 237, 0.35);
+  -webkit-box-shadow: 0 3px 4px 0 rgba(146, 44, 44, 0.32),
+    inset 0 -2px 0 0 #e63232;
+  box-shadow: 0 3px 4px 0 rgba(146, 44, 44, 0.32), inset 0 -2px 0 0 #e63232;
+  border-radius: 3px;
+    font-family: system, -apple-system, BlinkMacSystemFont;
+  font-size: 13px;
+  color: #FFFFFF;
+  letter-spacing: 0.7px;
+  text-align: center;
+  line-height: 16px;
+}
+
+.Btn_blue_normal:hover {
+  -webkit-box-shadow: 0 8px 20px 0 rgba(44, 71, 146, 0.4);
+  box-shadow: 0 8px 20px 0 rgba(44, 71, 146, 0.4);
+  border-radius: 3px;
+  -webkit-transform: scale(1.02);
+  transform: scale(1.01) translateY(-2px);
+}
+.Btn_blue_normal:active {
+  -webkit-box-shadow: 0 3px 4px 0 rgba(44, 71, 146, 0.32),
+    inset 0 0px 0 0 #e63232;
+  box-shadow: 0 3px 4px 0 rgba(44, 71, 146, 0.32), inset 0 0px 0 0 #e63232;
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    from(#fc5252),
+    color-stop(96%, #fa4141)
+  );
+  background-image: linear-gradient(0deg, #fc5252 0%, #fa4141 96%);
+  -webkit-transform: scale(0.98);
+  transform: scale(1);
+  /*   transition: all 0.4s; */
 }
