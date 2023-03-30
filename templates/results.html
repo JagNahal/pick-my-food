@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="results">
+        <div class="container">
+            <h2>Recommended Restaurant</h2>
+            <div class="restaurant-info">
+                <h3>{{ restaurant.name }}</h3>
+                {% if 'location' in restaurant and 'address' in restaurant.location %}
+                    <p>Address: {{ restaurant.location.address }}</p>
+                {% endif %}
+                <p>Phone: {{ restaurant.phone }}</p>
+                {% if restaurant.website %}
+                    <p>Website: <a href="{{ restaurant.website }}" target="_blank">{{ restaurant.website }}</a></p>
+                {% endif %}
+            </div>
+            <a href="{{ url_for('index') }}" class="back-link">Search again</a>
+        </div>
+    </section>
+{% endblock %}

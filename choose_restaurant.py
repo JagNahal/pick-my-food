@@ -20,21 +20,16 @@ CUISINE_CODES = {
 }
 
 
-def which_location():
-    location = input("Where do you want to eat? \n")
-    return location
-
-
-def get_location():
-    location = which_location()
+def get_location(city):
     BASE_URL = "http://api.openweathermap.org/geo/1.0/direct?"
-    URL = BASE_URL + "q=" + location + "&appid=" + os.environ['OPEN_WEATHER']
+    URL = BASE_URL + "q=" + city + "&appid=" + os.environ['OPEN_WEATHER']
     response = requests.get(URL)
     latitude = response.json()[0]["lat"]
     longitude = response.json()[0]["lon"]
     if response.status_code != 200:
         print("Error in the HTTP request")
     return latitude, longitude
+
 
 
 def get_cuisines_prompt():
@@ -85,15 +80,18 @@ def get_restaurants(cuisine_type, location):
     return restaurants
 
 
-def choose_restaurant():
-    location = get_location()
-    cuisine_type = which_cuisine()
+def choose_restaurant(city, cuisine_type):
+    location = get_location(city)
     restaurants = get_restaurants(cuisine_type, location)
     chosen_restaurant = random.choice(restaurants)
     return chosen_restaurant
 
 
+
 if __name__ == "__main__":
-    restaurant = choose_restaurant()
+    city = input("Where do you want to eat? \n")
+    cuisine_type = input(f"Which Cuisine?\n\n{get_cuisines_prompt()}\n\n> ").upper()
+    restaurant = choose_restaurant(city, cuisine_type)
     print(restaurant["name"])
     print(restaurant["website"])
+
