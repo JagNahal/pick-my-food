@@ -5,17 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pick My Food</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
 <body>
     <header>
-        <nav>
-            <a href="{{ url_for('index') }}"><h1>Pick My Food</h1></a>
-        </nav>
-    </header>
+    <nav>
+        <div class="header-container">
+            <a href="{{ url_for('index') }}" class="no-underline">
+                <div class="logo">Pick My Food</div>
+            </a>
+            <a href="{{ url_for('about') }}" class="header-button no-underline">About</a>
+        </div>
+    </nav>
+</header>
+
     {% block content %}{% endblock %}
 </body>
 
