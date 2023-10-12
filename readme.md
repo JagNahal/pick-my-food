@@ -1,6 +1,6 @@
 # Pick My Food
  
-Pick My Food uses Python and Travel Advisor's API to output a high rated restaurant from the Greater Vancouver Area based on what you are craving! 🍽️
+Pick My Food uses Python and Travel Advisor's API to output a high rated restaurant from a city of choice based on what you are craving! 🍽️
 
 ## Motivation
 
@@ -14,5 +14,5 @@ My friends and I often spent too long deciding where to eat due to the abundance
 
 ## What's Next For Pick My Food 
 
-Eventually I would like to add filters for specific price points to make sure no users feel alienated due to the program outputting a restaurant that costs within the hundreds. Adding the option to choose other locations would also allow people from across the world to use this program.
+Eventually I would like to add filters for specific price points to make sure no users feel alienated due to the program outputting a restaurant that costs within the hundreds.
 
